@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart {
-    private final List<Integer> prices = new ArrayList<>();
+    private final List<Price> prices2 = new ArrayList<>();
 
-    public void add(int price) {
-        prices.add(price);
+    public void add(Price price1) {
+        prices2.add(price1);
     }
 
-    public int calculateTotalPrice() {
-        return prices.stream().mapToInt(Integer::intValue).sum();
+    public Price calculateTotalPrice() {
+        return new Price(prices2.stream().mapToInt(Price::getPrice).sum());
     }
 
     public boolean hasDiscount() {
-        return calculateTotalPrice() >= 100;
+        return calculateTotalPrice().getPrice() >= 100;
     }
 
     public int numberOfProducts() {
-        return prices.size();
+        return prices2.size();
     }
 }
